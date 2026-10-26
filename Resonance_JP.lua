@@ -3,6 +3,7 @@
   UI・通知テキストを日本語化
   Kick→キック / Kill→キル / Anti-Lag→アンチラグ など
   SetNetworkOwner などAPI名・サービス名は変更なし
+  エロ系・ジョジョスタンド系の表示も日本語化
 ]]
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
@@ -106,10 +107,10 @@ do
         ForceRedownload: boolean?
     )
         if CustomImageManagerAssets[AssetName] ~= nil then
-            error(string.format("Asset %q already exists", AssetName))
+            error(string.format("お尻et %q already exists", AssetName))
         end
 
-        assert(typeof(RobloxAssetId) == "number", "RobloxAssetId must be a number")
+        assert(typeof(RobloxAssetId) == "number", "Robloxお尻etId must be a number")
 
         CustomImageManagerAssets[AssetName] = {
             RobloxId = RobloxAssetId,
@@ -994,15 +995,15 @@ function SyncPopOutVisibility(Box: any)
 end
 
 local function DimPopOutClone(Root: GuiObject)
-    for _, Descendant in Root:QueryDescendants("TextLabel, TextButton, TextBox") do
+    for _, Descendant in Root:QueryDescendants("TextLabel, Text尻on, TextBox") do
         Descendant.TextTransparency = math.max(Descendant.TextTransparency, 0.45)
     end
 
-    for _, Descendant in Root:QueryDescendants("ImageLabel, ImageButton") do
+    for _, Descendant in Root:QueryDescendants("ImageLabel, Image尻on") do
         Descendant.ImageTransparency = math.max(Descendant.ImageTransparency, 0.45)
     end
 
-    for _, Descendant in Root:QueryDescendants("GuiButton") do
+    for _, Descendant in Root:QueryDescendants("Gui尻on") do
         Descendant.Active = false
         Descendant.AutoButtonColor = false
     end
@@ -1504,7 +1505,7 @@ function Library:ApplyLucideIcon(ImageGui: any, Icon: any, Rotation: number?)
         return
     end
 
-    if not (ImageGui:IsA("ImageLabel") or ImageGui:IsA("ImageButton")) then
+    if not (ImageGui:IsA("ImageLabel") or ImageGui:IsA("Image尻on")) then
         return
     end
 
@@ -1640,7 +1641,7 @@ ScreenGui.DescendantRemoving:Connect(function(Instance)
     end)
 end)
 
-local ModalElement = New("TextButton", {
+local ModalElement = New("Text尻on", {
     BackgroundTransparency = 1,
     Modal = false,
     Size = UDim2.fromScale(0, 0),
@@ -2624,7 +2625,7 @@ function Library:MakeBoxPopOut(Box: any, Options: {
         DimPopOutClone(PlaceholderHeader)
 
         if PopOutIcon then
-            local PlaceholderDockIcon = New("ImageButton", {
+            local PlaceholderDockIcon = New("Image尻on", {
                 AutoButtonColor = false,
                 AnchorPoint = Vector2.new(1, 0.5),
                 BackgroundTransparency = 1,
@@ -2958,12 +2959,12 @@ function Library:MakeBoxPopOut(Box: any, Options: {
     end
 
     BindDragSource(Header)
-    for _, Descendant in Header:QueryDescendants("GuiObject:not(ImageButton)") do
+    for _, Descendant in Header:QueryDescendants("GuiObject:not(Image尻on)") do
         BindDragSource(Descendant)
     end
 
     Library:GiveSignal(Header.DescendantAdded:Connect(function(Descendant)
-        if Descendant:IsA("GuiObject") and not Descendant:IsA("ImageButton") then
+        if Descendant:IsA("GuiObject") and not Descendant:IsA("Image尻on") then
             BindDragSource(Descendant)
         end
     end))
@@ -3178,7 +3179,7 @@ function Library:AddDraggableButton(...)
         Destroyed = false
     }
 
-    local Button = New("TextButton", {
+    local Button = New("Text尻on", {
         BackgroundColor3 = "BackgroundColor",
         Position = UDim2.fromOffset(6, 6),
         TextSize = 16,
@@ -3362,7 +3363,7 @@ function Library:AddDraggableImageButton(...)
 
     local DraggableImageButton = {}
 
-    local Button = New("TextButton", {
+    local Button = New("Text尻on", {
         BackgroundColor3 = "BackgroundColor",
         Position = UDim2.fromOffset(6, 6),
         Size = UDim2.fromOffset(IconSize + 12, IconSize + 12),
@@ -4009,8 +4010,8 @@ do
         local ParentObj = self
         local ToggleLabel = ParentObj.TextLabel
 
-        if ParentObj.Type == "Button" or ParentObj.Type == "SubButton" then
-            assert(Info.Mode == "押す", "KeyPicker on Buttons can only be applied with the '押す' mode.")
+        if ParentObj.Type == "尻on" or ParentObj.Type == "Sub尻on" then
+            assert(Info.Mode == "押す", "KeyPicker on 尻ons can only be applied with the '押す' mode.")
 
             ToggleLabel = ParentObj.Base
         end
@@ -4043,7 +4044,7 @@ do
         }
 
         if KeyPicker.Mode == "押す" then
-            assert(ParentObj.Type == "Label" or ParentObj.Type == "Button" or ParentObj.Type == "SubButton", "KeyPicker with the mode '押す' can be only applied on Labels and Buttons.")
+            assert(ParentObj.Type == "Label" or ParentObj.Type == "尻on" or ParentObj.Type == "Sub尻on", "KeyPicker with the mode '押す' can be only applied on Labels and 尻ons.")
 
             KeyPicker.SyncToggleState = false
             Info.Modes = { "押す" }
@@ -4059,7 +4060,7 @@ do
         end
 
         local Picking = false
-        local IsForButton = ParentObj.Type == "Button" or ParentObj.Type == "SubButton"
+        local IsForButton = ParentObj.Type == "尻on" or ParentObj.Type == "Sub尻on"
 
         local SpecialKeys = {
             ["MB1"] = Enum.UserInputType.MouseButton1,
@@ -4241,7 +4242,7 @@ do
             RunService.RenderStepped:Wait()
         end
 
-        local Picker = New("TextButton", {
+        local Picker = New("Text尻on", {
             BackgroundColor3 = "MainColor",
             Size = UDim2.fromOffset(18, 18),
             Text = (IsForButton and SlideOverflow) and "" or KeyPicker.Value,
@@ -4351,7 +4352,7 @@ do
 
         local KeybindsToggle = { Normal = KeyPicker.Mode ~= "Toggle" }
         do
-            local Holder = New("TextButton", {
+            local Holder = New("Text尻on", {
                 BackgroundTransparency = 1,
                 Size = UDim2.new(1, 0, 0, 16),
                 Text = "",
@@ -4496,7 +4497,7 @@ do
         for Index, Mode in Info.Modes do
             local ModeButton = {}
 
-            local Button = New("TextButton", {
+            local Button = New("Text尻on", {
                 BackgroundColor3 = "MainColor",
                 BackgroundTransparency = 1,
                 Size = UDim2.new(1, 0, 0, IsForButton and 21 or (TotalModeButtons == 1 and 18 or 19)),
@@ -5218,7 +5219,7 @@ do
         }
         ColorPicker.Hue, ColorPicker.Sat, ColorPicker.Vib = ColorPicker.Value:ToHSV()
 
-        local Holder = New("TextButton", {
+        local Holder = New("Text尻on", {
             BackgroundColor3 = ColorPicker.Value,
             Size = UDim2.fromOffset(18, 18),
             Text = "",
@@ -5393,7 +5394,7 @@ do
             Parent = ColorHolder,
         })
 
-        local SatVipMap = New("ImageButton", {
+        local SatVipMap = New("Image尻on", {
             BackgroundColor3 = ColorPicker.Value,
             Image = CustomImageManager.GetAsset("SaturationMap"),
             Size = UDim2.fromOffset(MapSize, MapSize),
@@ -5415,7 +5416,7 @@ do
             Parent = SatVibCursor,
         })
 
-        local HueSelector = New("TextButton", {
+        local HueSelector = New("Text尻on", {
             Size = UDim2.fromOffset(BarWidth, MapSize),
             Text = "",
             Parent = ColorHolder,
@@ -5438,7 +5439,7 @@ do
 
         local TransparencySelector, TransparencyColor, TransparencyCursor
         if Info.Transparency then
-            TransparencySelector = New("ImageButton", {
+            TransparencySelector = New("Image尻on", {
                 Image = CustomImageManager.GetAsset("TransparencyTexture"),
                 ScaleType = Enum.ScaleType.Tile,
                 Size = UDim2.fromOffset(BarWidth, MapSize),
@@ -5549,7 +5550,7 @@ do
                 ColorMenu:SetSize(UDim2.new(0, GetContentWidth(NewWidth), 0, 0))
             end
 
-            ResizeGrabber = New("TextButton", {
+            ResizeGrabber = New("Text尻on", {
                 AnchorPoint = Vector2.new(1, 0),
                 BackgroundTransparency = 1,
                 Position = UDim2.new(1, -Library.CornerRadius / 4, 0, 0),
@@ -5666,7 +5667,7 @@ do
         ContextMenu.List.Padding = UDim.new(0, 6)
         do
             local function CreateButton(Text, Func)
-                local Button = New("TextButton", {
+                local Button = New("Text尻on", {
                     BackgroundColor3 = "MainColor",
                     BackgroundTransparency = 1,
                     Size = UDim2.new(1, 0, 0, 21),
@@ -5733,7 +5734,7 @@ do
             Parent = ActionHolder,
         })
 
-        local CopyColorButton = New("TextButton", {
+        local CopyColorButton = New("Text尻on", {
             BackgroundColor3 = "MainColor",
             Size = UDim2.fromScale(1, 1),
             Text = "Copy color",
@@ -5752,7 +5753,7 @@ do
             })
         )
 
-        local PasteColorButton = New("TextButton", {
+        local PasteColorButton = New("Text尻on", {
             BackgroundColor3 = "MainColor",
             Size = UDim2.fromScale(1, 1),
             Text = "Paste color",
@@ -6478,7 +6479,7 @@ do
             IconImage = nil,
 
             Tween = nil,
-            Type = "Button",
+            Type = "尻on",
 
             Parent = Groupbox,
         }
@@ -6528,7 +6529,7 @@ do
         end
 
         local function CreateButton(Button)
-            local Base = New("TextButton", {
+            local Base = New("Text尻on", {
                 Active = not Button.Disabled,
                 BackgroundColor3 = Button.Disabled and "BackgroundColor" or "MainColor",
                 Size = UDim2.fromScale(1, 1),
@@ -6700,7 +6701,7 @@ do
                 IconImage = nil,
 
                 Tween = nil,
-                Type = "SubButton",
+                Type = "Sub尻on",
             }
 
             Button.SubButton = SubButton
@@ -6953,7 +6954,7 @@ do
             Parent = Groupbox,
         }
 
-        local Button = New("TextButton", {
+        local Button = New("Text尻on", {
             Active = not Toggle.Disabled,
             BackgroundTransparency = 1,
             Size = UDim2.new(1, 0, 0, 18),
@@ -7211,7 +7212,7 @@ do
             Parent = Groupbox,
         }
 
-        local Button = New("TextButton", {
+        local Button = New("Text尻on", {
             Active = not Toggle.Disabled,
             BackgroundTransparency = 1,
             Size = UDim2.new(1, 0, 0, 18),
@@ -7761,7 +7762,7 @@ do
             })
         end
 
-        local Bar = New("TextButton", {
+        local Bar = New("Text尻on", {
             Active = not Slider.Disabled,
             AnchorPoint = Vector2.new(0, 1),
             BackgroundColor3 = "MainColor",
@@ -8219,7 +8220,7 @@ do
             Parent = Holder,
         })
 
-        local DisplayContainer = New("TextButton", {
+        local DisplayContainer = New("Text尻on", {
             AnchorPoint = Vector2.new(0, 1),
             BackgroundColor3 = "MainColor",
             Position = UDim2.fromScale(0, 1),
@@ -8259,7 +8260,7 @@ do
             Parent = DisplayContainer,
         })
 
-        local DisplayButton = New("TextButton", {
+        local DisplayButton = New("Text尻on", {
             Active = not Dropdown.Disabled,
             BackgroundTransparency = 1,
             Size = UDim2.new(1, 0, 0, 21),
@@ -8763,7 +8764,7 @@ do
                 Parent = Container,
             })
 
-            local Button = New("TextButton", {
+            local Button = New("Text尻on", {
                 BackgroundTransparency = 1,
                 Size = UDim2.new(1, 0, 0, ItemHeight),
                 Text = "",
@@ -10445,7 +10446,7 @@ function Library:Notify(...)
 
     local CloseButton
     if Data.Closable then
-        CloseButton = New("ImageButton", {
+        CloseButton = New("Image尻on", {
             AnchorPoint = Vector2.new(1, 0),
             BackgroundTransparency = 1,
             Image = CloseIcon and CloseIcon.Url or "",
@@ -10859,7 +10860,7 @@ function Library:CreateWindow(WindowInfo)
         Library.KeybindFrame.Position = UDim2.new(0, 6, 0.5, 0)
         Library.KeybindFrame.Visible = false
 
-        MainFrame = New("TextButton", {
+        MainFrame = New("Text尻on", {
             BackgroundColor3 = function()
                 return Library:GetBetterColor(Library.Scheme.BackgroundColor, -1)
             end,
@@ -11179,7 +11180,7 @@ function Library:CreateWindow(WindowInfo)
         })
 
         if WindowInfo.Resizable then
-            ResizeButton = New("TextButton", {
+            ResizeButton = New("Text尻on", {
                 AnchorPoint = Vector2.new(1, 0),
                 BackgroundTransparency = 1,
                 Position = UDim2.new(1, -WindowInfo.CornerRadius / 4, 0, 0),
@@ -11582,7 +11583,7 @@ function Library:CreateWindow(WindowInfo)
 
         Icon = Library:GetCustomIcon(Icon)
         do
-            TabButton = New("TextButton", {
+            TabButton = New("Text尻on", {
                 BackgroundColor3 = "MainColor",
                 BackgroundTransparency = 1,
                 Size = UDim2.new(1, 0, 0, 40),
@@ -12037,7 +12038,7 @@ function Library:CreateWindow(WindowInfo)
                 local IsNameEmpty = Name == nil or Trim(tostring(Name)) == ""
                 local TabStoringIndex = IsNameEmpty and tostring(TabIndex) or Name
 
-                local Button = New("TextButton", {
+                local Button = New("Text尻on", {
                     BackgroundColor3 = "MainColor",
                     BackgroundTransparency = 0,
                     Size = UDim2.fromOffset(0, 34),
@@ -12445,7 +12446,7 @@ function Library:CreateWindow(WindowInfo)
                     Parent = TextsFrame,
                 })
 
-                GroupboxCollapseArrow = New("ImageButton", {
+                GroupboxCollapseArrow = New("Image尻on", {
                     Visible = Info.DisableCollapsing ~= true,
                     AnchorPoint = Vector2.new(1, 0.5),
                     BackgroundTransparency = 1,
@@ -12943,7 +12944,7 @@ function Library:CreateWindow(WindowInfo)
 
         Icon = if Icon == "key" then KeyIcon else Library:GetCustomIcon(Icon)
         do
-            TabButton = New("TextButton", {
+            TabButton = New("Text尻on", {
                 BackgroundColor3 = "MainColor",
                 BackgroundTransparency = 1,
                 Size = UDim2.new(1, 0, 0, 40),
@@ -13100,7 +13101,7 @@ function Library:CreateWindow(WindowInfo)
                 }):Play()
             end)
 
-            local Button = New("TextButton", {
+            local Button = New("Text尻on", {
                 AnchorPoint = Vector2.new(1, 0),
                 BackgroundColor3 = "MainColor",
                 Position = UDim2.fromScale(1, 0),
@@ -13316,7 +13317,7 @@ function Library:CreateWindow(WindowInfo)
         local ButtonsHolder
         local FooterButtonsList = {}
 
-        DialogOverlay = New("TextButton", {
+        DialogOverlay = New("Text尻on", {
             AutoButtonColor = false,
             BackgroundColor3 = "DarkColor",
             BackgroundTransparency = 1,
@@ -13331,7 +13332,7 @@ function Library:CreateWindow(WindowInfo)
             BackgroundTransparency = 0.5,
         }):Play()
 
-        DialogFrame = New("TextButton", {
+        DialogFrame = New("Text尻on", {
             AnchorPoint = Vector2.new(0.5, 0.5),
             BackgroundColor3 = "BackgroundColor",
             Position = UDim2.fromScale(0.5, 0.5),
@@ -13644,7 +13645,7 @@ function Library:CreateWindow(WindowInfo)
                 BtnOutline = "BackgroundColor"
             end
 
-            local TextBtn = New("TextButton", {
+            local TextBtn = New("Text尻on", {
                 BackgroundColor3 = BtnColor,
                 BorderColor3 = BtnOutline,
                 BackgroundTransparency = WaitTime > 0 and 0.5 or 0,
@@ -13852,9 +13853,9 @@ function Library:CreateWindow(WindowInfo)
 
                 if Instance:IsA("GuiObject") then
                     local ClassName = Instance.ClassName
-                    if ClassName == "ImageLabel" or ClassName == "ImageButton" then
+                    if ClassName == "ImageLabel" or ClassName == "Image尻on" then
                         FadeInstance(Instance, ImageProperties)
-                    elseif ClassName == "TextLabel" or ClassName == "TextBox" or ClassName == "TextButton" then
+                    elseif ClassName == "TextLabel" or ClassName == "TextBox" or ClassName == "Text尻on" then
                         FadeInstance(Instance, TextProperties)
                     else
                         FadeInstance(Instance, GuiProperties)
@@ -13916,7 +13917,7 @@ function Library:CreateWindow(WindowInfo)
         local Dragging = false
         local Changed
 
-        local SidebarGrabber = New("TextButton", {
+        local SidebarGrabber = New("Text尻on", {
             AnchorPoint = Vector2.new(0.5, 0),
             BackgroundTransparency = 1,
             Position = UDim2.fromScale(0.5, 0),
@@ -14133,7 +14134,7 @@ function Library:CreateLoading(LoadingInfo)
         end)
     end)
 
-    local MainFrame = New("TextButton", {
+    local MainFrame = New("Text尻on", {
         Name = "Main",
         AnchorPoint = Vector2.new(0.5, 0.5),
         BackgroundColor3 = function()
@@ -14631,7 +14632,7 @@ function Library:CreateLoading(LoadingInfo)
     end
 
     function Loading:SetErrorButtons(Buttons)
-        assert(typeof(Buttons) == "table", "Buttons must be a table")
+        assert(typeof(Buttons) == "table", "尻ons must be a table")
 
         for _, button in ErrorButtonsHolder:GetChildren() do
             if button:IsA("Frame") then
@@ -14668,7 +14669,7 @@ function Library:CreateLoading(LoadingInfo)
                 BtnOutline = "BackgroundColor"
             end
 
-            local TextBtn = New("TextButton", {
+            local TextBtn = New("Text尻on", {
                 BackgroundColor3 = BtnColor,
                 BorderColor3 = BtnOutline,
                 Size = UDim2.fromOffset(0, 26),
@@ -17357,7 +17358,7 @@ do
 							particleEmitter.LightEmission = 0
 							particleEmitter.LightInfluence = 0
 							particleEmitter.ZOffset = 0
-							textButton = Instance.new("TextButton")
+							textButton = Instance.new("Text尻on")
 							textButton.BackgroundTransparency = 1
 							textButton.Modal = false
 							textButton.Size = UDim2.fromScale(0, 0)
@@ -17671,7 +17672,7 @@ do
 									Torso = { 8, 0, 0 },
 									BodyPos = { 0, 2.3, 1 },
 								},
-								["JoJo Stand"] = {
+								["ジョジョスタンド"] = {
 									["Right Arm"] = { -16, 0.3, -6.7 },
 									["Left Arm"] = { -2, 0, 0 },
 									["Right Leg"] = { -16, 22.5, -1 },
@@ -17689,7 +17690,7 @@ do
 									Torso = { 0, 0, 0 },
 									BodyPos = { 0, -2.1, -1.4 },
 								},
-								["Standing Sex"] = {
+								["立ちバック"] = {
 									["Right Arm"] = { 110, 0, -30 },
 									["Left Arm"] = { 110, 0, 30 },
 									["Right Leg"] = { 75, 0, 20 },
@@ -17698,7 +17699,7 @@ do
 									Torso = { 0, 0, 0 },
 									BodyPos = { 0, 0, -1.2 },
 								},
-								["Doggy-Pose Sex"] = {
+								["Doggy-Pose セックス"] = {
 									["Right Arm"] = { 100, 0, 0 },
 									["Left Arm"] = { 100, 0, 0 },
 									["Right Leg"] = { 90, 0, 40 },
@@ -17707,7 +17708,7 @@ do
 									Torso = { 100, -180, 0 },
 									BodyPos = { 0, -1.4, -1.4 },
 								},
-								["Missionary Sex"] = {
+								["正常位 セックス"] = {
 									["Right Arm"] = { 0, 0, 0 },
 									["Left Arm"] = { 0, 0, 0 },
 									["Right Leg"] = { 0, 0, 45 },
@@ -17964,7 +17965,7 @@ do
 								Parts = {},
 								WingRipple = {},
 								Acquiring = {},
-								Names = { "Boobs", "Ass", "Penis", "Wings", "Cape", "67" },
+								Names = { "おっぱい", "お尻", "ペニス", "Wings", "Cape", "67" },
 								Counts = {
 									Boobs = 2,
 									Ass = 2,
@@ -18383,7 +18384,7 @@ do
 								if not (writefile and getcustomasset) then
 									return nil, "カスタム assets are not supported"
 								end
-								local str6 = (arg2 or "ResonanceAsset") .. "_" .. HttpService:GenerateGUID(false):gsub("%-", "") .. (arg3 or "")
+								local str6 = (arg2 or "Resonanceお尻et") .. "_" .. HttpService:GenerateGUID(false):gsub("%-", "") .. (arg3 or "")
 								local ok, result = pcall(game.HttpGet, game, arg)
 								if not ok or type(result) ~= "string" or result == "" then
 									return nil, "Download failed"
@@ -20343,7 +20344,7 @@ end
 				tbl12.UpdateAimConnection = function()
 					local aimSettings = tbl7.AimSettings
 					local fovEnabled = aimSettings.FOVEnabled or aimSettings.AimbotEnabled or aimSettings.TriggerbotEnabled
-					tbl12.SetRuntimeConnection("AimAssist", RunService.RenderStepped, fovEnabled, tbl12.UpdateAimAssist)
+					tbl12.SetRuntimeConnection("Aimお尻ist", RunService.RenderStepped, fovEnabled, tbl12.UpdateAimAssist)
 
 					if not fovEnabled and tbl6.Frame.Visible then
 						tbl6.Frame.Visible = false
@@ -23322,7 +23323,7 @@ end
 							arg2.Hits = 0
 
 							if arg and arg.Parent then
-								arg:SetAttribute("CurrentlyAssignedTo", nil)
+								arg:SetAttribute("Currentlyお尻ignedTo", nil)
 							end
 
 							if tbl8.PCLDESP and tbl12.UpdatePCLDESP then
@@ -23382,7 +23383,7 @@ end
 									end
 
 									if tbl12.IsWaitingPCLD(k) then
-										if tbl18.Player or tbl18.Candidate or tbl18.Hits ~= 0 or k:GetAttribute("CurrentlyAssignedTo") ~= nil then
+										if tbl18.Player or tbl18.Candidate or tbl18.Hits ~= 0 or k:GetAttribute("Currentlyお尻ignedTo") ~= nil then
 											tbl12.ClearPCLDAssignment(k, tbl18)
 										end
 									else
@@ -23436,7 +23437,7 @@ end
 														tbl18.Candidate = nil
 														tbl18.Hits = 0
 														tbl7.PCLD[v23] = k
-														k:SetAttribute("CurrentlyAssignedTo", v23.Name)
+														k:SetAttribute("Currentlyお尻ignedTo", v23.Name)
 														pcldesp = tbl8.PCLDESP
 														updatePCLDESP = pcldesp and tbl12.UpdatePCLDESP
 
@@ -23485,7 +23486,7 @@ end
 													tbl18.Candidate = nil
 													tbl18.Hits = 0
 													tbl7.PCLD[v23] = k
-													k:SetAttribute("CurrentlyAssignedTo", v23.Name)
+													k:SetAttribute("Currentlyお尻ignedTo", v23.Name)
 													pcldesp = tbl8.PCLDESP
 													updatePCLDESP = pcldesp and tbl12.UpdatePCLDESP
 
@@ -25763,21 +25764,21 @@ end
 
 						for _, v22 in coconutForms.Order, nil, nil do
 							if selected[v22] and #offsets + coconutForms.Counts[v22] <= coconutForms.Limit then
-								if v22 == "Boobs" then
+								if v22 == "おっぱい" then
 									local n37 = #offsets + 1
 									local n38 = #offsets + 2
 									local cframe = CFrame.new(-0.6, 0.5, -0.9)
 									local cframe2 = CFrame.new(0.6, 0.5, -0.9)
 									offsets[n37] = cframe
 									offsets[n38] = cframe2
-								elseif v22 == "Ass" then
+								elseif v22 == "お尻" then
 									local n37 = #offsets + 1
 									local n38 = #offsets + 2
 									local cframe = CFrame.new(-0.55, -1, 0.75)
 									local cframe2 = CFrame.new(0.55, -1, 0.75)
 									offsets[n37] = cframe
 									offsets[n38] = cframe2
-								elseif v22 == "Penis" then
+								elseif v22 == "ペニス" then
 									local n37 = #offsets + 1
 									local n38 = #offsets + 2
 									local cframe = CFrame.new(-0.55, -1.2, -0.8)
@@ -25891,7 +25892,7 @@ end
 							local n38 = 0
 
 							for k, v22 in coconutForms.Selected, nil, nil do
-								v22 = v22 and k ~= "Penis"
+								v22 = v22 and k ~= "ペニス"
 
 								if v22 then
 									n38 += coconutForms.Counts[k]
@@ -25981,7 +25982,7 @@ end
 						local v23 = nil
 
 						for _, v24 in ipairs(arg:QueryDescendants("BasePart")) do
-							if v24.CanQuery and not v24.Anchored and v24.Name ~= "Button" then
+							if v24.CanQuery and not v24.Anchored and v24.Name ~= "尻on" then
 								v23 = v23 or v24
 								if (v24.AssemblyRootPart or v24) == v24 then
 									tbl7.GrabbableParts[arg] = v24
@@ -27707,7 +27708,7 @@ end
 								if not rscOven then
 									return
 								end
-								local buttonOven = rscOven:WaitForChild("ButtonOven", 0.25)
+								local buttonOven = rscOven:WaitForChild("尻onOven", 0.25)
 								if not buttonOven then
 									return tbl12.DestroyToy(rscOven)
 								end
@@ -27758,7 +27759,7 @@ end
 								if not rscMicrowave then
 									return
 								end
-								local button = rscMicrowave:WaitForChild("Button", 0.25)
+								local button = rscMicrowave:WaitForChild("尻on", 0.25)
 								local primaryPart = rscMicrowave.PrimaryPart
 								if not (button and primaryPart) then
 									return tbl12.DestroyToy(rscMicrowave)
@@ -28621,7 +28622,7 @@ end
 							return Vector3.new(16 * math.sin(n37) ^ 3 / 17, 0, -(13 * math.cos(n37) - 5 * math.cos(2 * n37) - 2 * math.cos(3 * n37) - math.cos(4 * n37)) / 17)
 						end, true)
 
-						tbl13.AddShape("Penis", function(arg, arg2)
+						tbl13.AddShape("ペニス", function(arg, arg2)
 							local n37 = (arg - 1) / math.max(arg2 - 1, 1)
 							if n37 < 0.22 then
 								local n38 = n37 / 0.22 * 3.1415926535897931 * 2
@@ -33705,7 +33706,7 @@ Escape Timer: %*]]
 					tbl12.BreakLimb(localPlayer, "Legs")
 					local connection = nil
 
-					connection = v23:GetPropertyChangedSignal("HipHeight"):Connect(function()
+					connection = v23:GetPropertyChangedSignal("腰Height"):Connect(function()
 						if not tbl8.AntiBanana then
 							return connection:Disconnect()
 						end
@@ -36888,8 +36889,8 @@ Escape Timer: %*]]
 			Values = {
 				"FoodHamburger",
 				"InstrumentDrumBongos",
-				"InstrumentBrassTrumpet",
-				"InstrumentBrassBugle",
+				"InstrumentブラssTrumpet",
+				"InstrumentブラssBugle",
 				"InstrumentVoiceMicrophone",
 				"InstrumentWoodwindOcarina",
 				"InstrumentGuitarUkulele",
@@ -38086,14 +38087,14 @@ Escape Timer: %*]]
 		local v20 = nil
 
 		Experimental:AddButton({
-			Text = "作成 Button",
+			Text = "作成 尻on",
 			Func = function()
 				v20 = lib:AddDraggableButton("Break Part", function()
 					fn21()
 				end)
 			end,
 		}):AddButton({
-			Text = "Remove Button",
+			Text = "Remove 尻on",
 			Func = function()
 				if v20 and v20.Button then
 					v20:Destroy()
@@ -38248,10 +38249,10 @@ Escape Timer: %*]]
 		})
 
 		local v20 = Misc:AddDependencyBox()
-		v20:SetupDependencies({ { options.CoconutFormsDropdown, "Penis" } })
+		v20:SetupDependencies({ { options.CoconutFormsDropdown, "ペニス" } })
 
 		v20:AddSlider("CoconutShaftLength", {
-			Text = "Penis Shaft Length",
+			Text = "ペニス Shaft Length",
 			Default = tbl7.CoconutForms.ShaftLength,
 			Min = 2,
 			Max = 11,
@@ -38261,7 +38262,7 @@ Escape Timer: %*]]
 		})
 
 		v20:AddSlider("CoconutShaftSpacing", {
-			Text = "Penis Shaft Spacing",
+			Text = "ペニス Shaft Spacing",
 			Default = tbl7.CoconutForms.ShaftSpacing,
 			Min = 0.9,
 			Max = 3,
@@ -41356,16 +41357,16 @@ Escape Timer: %*]]
 	end
 
 	do
-		local v20 = tbl15.Keybinds:AddLeftGroupbox("Mobile Buttons", "smartphone")
+		local v20 = tbl15.Keybinds:AddLeftGroupbox("Mobile 尻ons", "smartphone")
 		local MobileKeybindsList = v20:AddDropdown("MobileKeybindsList", { Values = tbl7.KeybindNames, Default = 1, Multi = false, Text = "選択 Keybind to Map" })
 
 		v20:AddButton({
-			Text = "作成 Button",
+			Text = "作成 尻on",
 			Func = function()
 				tbl12.AddMobileButton(MobileKeybindsList.Value)
 			end,
 		}):AddButton({
-			Text = "Remove Button",
+			Text = "Remove 尻on",
 			Func = function()
 				tbl12.RemoveMobileButton(MobileKeybindsList.Value)
 			end,
@@ -41804,7 +41805,7 @@ Escape Timer: %*]]
 				"Drinking",
 				"Drank",
 				"Slurp",
-				"Lick",
+				"舐め",
 				"Soda",
 				"Burp",
 				"Belch",
@@ -41879,7 +41880,7 @@ Escape Timer: %*]]
 	end
 
 	do
-		local v20 = tbl15.Misc:AddRightGroupbox("Aim Assist", "crosshair")
+		local v20 = tbl15.Misc:AddRightGroupbox("Aim お尻ist", "crosshair")
 
 		v20:AddToggle("AimbotToggle", {
 			Text = "Toggle",
@@ -42510,9 +42511,9 @@ Escape Timer: %*]]
 		})
 
 		if not lib.IsMobile then
-			Menu:AddToggle("OnlyAssignedKeybinds", {
+			Menu:AddToggle("Onlyお尻ignedKeybinds", {
 				Default = false,
-				Text = "Only Show Assigned",
+				Text = "Only Show お尻igned",
 				Callback = function(onlyAssignedKeybinds)
 					tbl8.OnlyAssignedKeybinds = onlyAssignedKeybinds
 					tbl12.UpdateKeybindMenu()
@@ -42701,8 +42702,8 @@ Escape Timer: %*]]
 			Loaded = 71450094482101,
 		}
 
-		Notifications:AddToggle("NotificationMaster", {
-			Text = "Master Switch",
+		Notifications:AddToggle("Notificationご主人様", {
+			Text = "ご主人様 Switch",
 			Default = true,
 			Tooltip = "Enables or disables every Resonance notification",
 			Callback = function(enabled)
